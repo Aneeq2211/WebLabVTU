@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo"></p>
+    <script type="text/javascript">
+      var str = prompt("Enter the Input", "");
+      var temp = str;
+      if (!isNaN(str)) {
+        var num,
+          rev = 0,
+          remainder;
+        num = parseInt(str);
+        while (num != 0) {
+          remainder = num % 10;
+          num = parseInt(num / 10);
+          rev = rev * 10 + remainder;
+        }
+        document.getElementById("demo").innerHTML =
+          "The given number is : " +
+          str +
+          "<br>" +
+          "The reversed number is : " +
+          rev;
+      } else {
+        str = str.toUpperCase();
+        for (var i = 0; i < str.length; i++) {
+          var chr = str.charAt(i);
+          if (
+            chr == "A" ||
+            chr == "E" ||
+            chr == "I" ||
+            chr == "O" ||
+            chr == "U"
+          )
+            break;
+        }
+        if (i < str.length)
+          document.getElementById("demo").innerHTML =
+            "The given string is : " +
+            temp +
+            "<br>" +
+            "The position of the left most vowel is " +
+            (i + 1);
+        else
+          document.getElementById("demo").innerHTML =
+            "No vowel found in the entered string";
+      }
+    </script>
+  </body>
+</html>
