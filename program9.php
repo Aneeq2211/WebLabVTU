@@ -1,24 +1,33 @@
 <?php 
-$states = "Mississippi Alabama Texas Massachusetts Kansas";
-$statesArray = [];$states1 = explode(' ',$states);
+$allStates = "Mississippi Alabama Texas Massachusetts Kansas";
+
+$inputArray = explode(' ',$allStates);
+$outputArray = [];
+
+$pattern = array('/xas$/', '/^k.*s$/i', '/^M.*s$/', '/a$/' );
+
 echo "Original Array :<br>";
-foreach ( $states1 as $i => $value )
+foreach ( $inputArray as $i => $value )
     print("STATES[$i]=$value<br>");
-foreach($states1 as $state)  {
-    if(preg_match( '/xas$/', ($state)))
-        $statesArray[0] = ($state);
+
+foreach($inputArray as $state)  {
+
+    if(preg_match( $pattern[0], ($state)))
+        $outputArray[0] = ($state);
+
+    if(preg_match( $pattern[1], ($state)))
+        $outputArray[1] = ($state);
+
+    if(preg_match( $pattern[2], ($state)))
+        $outputArray[2] = ($state);
+
+    if(preg_match( $pattern[3], ($state)))
+        $outputArray[3] = ($state);
+
 }
-foreach($states1 as $state) {
-    if(preg_match('/^k.*s$/i', ($state)))
-        $statesArray[1] = ($state);
-}
-foreach($states1 as $state) {
-    if(preg_match('/^M.*s$/', ($state)))$statesArray[2] = ($state);
-}
-foreach($states1 as $state){
-    if(preg_match('/a$/', ($state)))$statesArray[3] = ($state);
-}
+
+sort($outputArray);
 echo "<br><br>Resultant Array :<br>";
-foreach ( $statesArray as $array => $value )
-    print("STATES[$array]=$value<br>"); 
+foreach ( $outputArray as $i => $value )
+    print("STATES[$i]=$value<br>"); 
 ?>
